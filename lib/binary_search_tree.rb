@@ -107,4 +107,34 @@ class BinarySearchTree
     end
   end
 
+  def depth_of(score)
+    if include?(score) == false
+      return nil
+    end
+    counter = 0
+    if @root.score == score
+      return counter
+    elsif @root.score > score
+      next_node = @root.left_link
+      counter += 1
+      if next_node.score == score
+        return counter
+      elsif next_node.score > score
+        next_node = next_node.left_link
+        counter += 1
+        return counter
+      elsif next_node.score < score
+        next_node = next_node.right_link
+        counter += 1
+        return counter
+      end
+    elsif @root.score < score
+      next_node = @root.right_link
+      counter += 1
+      if next_node.score == score
+        return counter
+      end
+    end
+  end
+
 end
