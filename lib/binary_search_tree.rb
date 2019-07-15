@@ -57,4 +57,54 @@ class BinarySearchTree
     end
   end
 
+  def include?(score_to_check)
+    if @root.score == score_to_check
+      return true
+    elsif score_to_check < @root.score
+      next_node = @root.left_link
+      if next_node.score == score_to_check
+        return true
+      elsif score_to_check < next_node.score
+        next_node = next_node.left_link
+        if next_node.score == score_to_check
+          return true
+        else
+          return false
+        end
+      elsif score_to_check > next_node.score
+        next_node = next_node.right_link
+        if next_node.score == score_to_check
+          return true
+        else
+          return false
+        end
+      end
+    elsif score_to_check > @root.score
+      next_node = @root.right_link
+      if next_node.score == score_to_check
+        return true
+      elsif score_to_check < next_node.score
+        if next_node.left_link == nil
+          return false
+        end
+        next_node = next_node.left_link
+        if next_node.score == score_to_check
+          return true
+        else
+          return false
+        end
+      elsif score_to_check > next_node.score
+        if next_node.right_link == nil
+          return false
+        end
+        next_node = next_node.right_link
+        if next_node.score == score_to_check
+          return true
+        else
+          return false
+        end
+      end
+    end
+  end
+
 end

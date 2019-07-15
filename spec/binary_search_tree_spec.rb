@@ -42,3 +42,24 @@ describe 'insert method' do
     expect(data_addtion4).to eq(2)
   end
 end
+
+describe 'include?' do
+  it 'checks if that node is in the tree' do
+    tree = BinarySearchTree.new
+    score = 61
+    data = "Bill & Ted's Excellent Adventure"
+    data_addition = tree.insert(score, data)
+    score2 = 16
+    data2 = "Johnny English"
+    data_addition2 = tree.insert(score2, data2)
+    score3 = 92
+    data3 = "Sharknado 3"
+    data_addtion3 = tree.insert(score3, data3)
+    score4 = 50
+    data4 = "Hannibal Buress: Animal Furnace"
+    data_addtion4 = tree.insert(score4, data4)
+
+    expect(tree.include?(16)).to eq true
+    expect(tree.include?(72)).to eq false
+  end
+end
